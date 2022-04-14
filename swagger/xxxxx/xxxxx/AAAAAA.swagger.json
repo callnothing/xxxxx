@@ -1,0 +1,148 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "AAAAAA.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "AAAAAA"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/healthcheck": {
+      "get": {
+        "operationId": "AAAAAA_Heathcheck",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/xxxxxHealthcheckResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "msg",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AAAAAA"
+        ]
+      }
+    },
+    "/api/helloworld": {
+      "post": {
+        "operationId": "AAAAAA_Helloworld",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/xxxxxHelloReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/xxxxxHelloRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AAAAAA"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "xxxxxHealthcheckResponse": {
+      "type": "object",
+      "example": {
+        "result": "ok"
+      },
+      "properties": {
+        "result": {
+          "type": "string"
+        }
+      }
+    },
+    "xxxxxHelloReply": {
+      "type": "object",
+      "example": {
+        "msg": "hello world from server",
+        "code": "0"
+      },
+      "properties": {
+        "msg": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        }
+      }
+    },
+    "xxxxxHelloRequest": {
+      "type": "object",
+      "example": {
+        "msg": "hello world"
+      },
+      "properties": {
+        "msg": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
